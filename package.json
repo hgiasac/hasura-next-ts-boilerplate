@@ -1,0 +1,43 @@
+{
+  "name": "hasura-next-ts-boilerplate",
+  "version": "1.0.0",
+  "description": "Next.js Typescript boilerplate with Hasura GraphQL backend",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hgiasac/hasura-next-ts-boilerplate.git"
+  },
+  "keywords": [
+    "next.js",
+    "hasura",
+    "typescript",
+    "boilerplate"
+  ],
+  "author": "Toan Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hgiasac/hasura-next-ts-boilerplate/issues"
+  },
+  "homepage": "https://github.com/hgiasac/hasura-next-ts-boilerplate#readme",
+  "dependencies": {
+    "@apollo/client": "^3.0.0-beta.44",
+    "graphql": "^15.0.0",
+    "next": "^9.3.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.2",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "tslint": "^6.1.1",
+    "tslint-consistent-codestyle": "^1.16.0",
+    "tslint-react-hooks": "^2.2.2",
+    "typescript": "^3.8.3"
+  }
+}
