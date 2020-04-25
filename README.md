@@ -10,6 +10,9 @@ This sample SSR react application with Next.js, integrating [Hasura backend Type
 - [React 16+](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
 - [Redux](https://redux.js.org/)
+- [Redux Saga](https://redux-saga.js.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Line Awesome](https://icons8.com/line-awesome)
 - [Firebase Ecosystem](https://firebase.google.com/)
 
 #### Install project:
@@ -51,3 +54,12 @@ npm run clean
   to be deployed on Node 8 rather than Node 6
   ([Firebase Blog Announcement](https://firebase.googleblog.com/2018/08/cloud-functions-for-firebase-config-node-8-timeout-memory-region.html))
   . This is matched in by specifying target as `es2017` in [`src/functions/tsconfig.json`](src/functions/tsconfig) so that typescript output somewhat compacter and moderner code.
+
+## Learning Resources
+- https://github.com/piotrwitek/react-redux-typescript-guide
+- https://www.tailwindtoolbox.com/
+
+## Development tools
+- [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
