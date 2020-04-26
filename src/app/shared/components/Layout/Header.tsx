@@ -1,20 +1,22 @@
 import Link from "next/link";
-import { useState, FunctionComponent } from "react";
+import * as React from "react";
 import { connect, MapDispatchToProps } from "react-redux";
-import { actionOpenMobileSidebar } from "store/global/actions";
+import { actionOpenMobileSidebar } from "../../../store/global/actions";
 import { IconButton } from "../General/Button";
+import { OpenMobileSidebarAction } from "../../../store/global/types";
 
-interface IDispatchProps {
-  openMobileSidebar: () => void;
-}
+type IDispatchProps = {
+  readonly openMobileSidebar: () => OpenMobileSidebarAction
+};
 
 type HeaderProps = IDispatchProps;
 
-const Header: FunctionComponent<HeaderProps> = ({
-  // openMobileSidebar
-}) => {
+const Header: React.FunctionComponent<HeaderProps> = () => {
 
-  const [isExpanded, toggleExpansion] = useState(false);
+  const [isExpanded, toggleExpansion] = React.useState(false);
+  const listClass =
+    `${isExpanded ? "block" : "hidden"
+    } md:flex flex-col md:flex-row md:items-center md:justify-center text-sm w-full md:w-auto`;
 
   return (
     <header className="bg-teal-500">
@@ -35,13 +37,12 @@ const Header: FunctionComponent<HeaderProps> = ({
         </IconButton>
 
         <ul
-          className={`${
-            isExpanded ? `block` : `hidden`
-            } md:flex flex-col md:flex-row md:items-center md:justify-center text-sm w-full md:w-auto`}
+          className={listClass}
         >
           {[
             { title: "Home", route: "/" },
-            { title: "About", route: "/about" }
+            { title: "About", route: "/about" },
+            { title: "Login", route: "/auth/login" }
           ].map((navigationItem) => (
             <li className="mt-3 md:mt-0 md:ml-6" key={navigationItem.title}>
               <Link href={navigationItem.route}>

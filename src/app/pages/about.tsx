@@ -1,6 +1,7 @@
-import Layout from "shared/components/Layout/Layout";
+import * as React from "react";
+import { Layout } from "../shared/components/Layout/Layout";
 
-export default () => (
+const About = (): JSX.Element => (
   <Layout title="About">
     <div className="flex flex-col items-center justify-center">
       <h2 className="font-bold my-8 p-3 text-lg md:text-2xl">
@@ -9,3 +10,5 @@ export default () => (
     </div>
   </Layout>
 );
+
+export default About;

@@ -1,5 +1,5 @@
-import { IGlobalState } from "./global/types";
+import { GlobalState } from "./global/types";
 
-export interface IAppState {
-  global: IGlobalState;
-}
+export type AppState = {
+  readonly global: GlobalState
+};

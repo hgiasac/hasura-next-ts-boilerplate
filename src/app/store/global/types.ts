@@ -7,13 +7,13 @@ export type GlobalActionType
   = typeof OPEN_MOBILE_SIDEBAR
   | typeof CLOSE_MOBILE_SIDEBAR;
 
-export interface IGlobalState {
-  mobileSidebarVisibility: boolean;
-}
+export type GlobalState = {
+  readonly mobileSidebarVisibility: boolean
+};
 
-export interface IReadonlyAction<T> extends Action<T> {
-  readonly type: T;
-}
+export type IReadonlyAction<T> = Action<T> & {
+  readonly type: T
+};
 
 export type OpenMobileSidebarAction = IReadonlyAction<typeof OPEN_MOBILE_SIDEBAR>;
 export type CloseMobileSidebarAction = IReadonlyAction<typeof CLOSE_MOBILE_SIDEBAR>;
