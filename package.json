@@ -17,7 +17,9 @@
     "lint-functions": "eslint --ext .js,.ts src/functions",
     "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
     "install-deps": "cd \"dist/functions\" && npm i",
-    "stylelint": "npx stylelint '**/*.css'"
+    "stylelint": "npx stylelint '**/*.css'",
+    "test": "cypress run --project ./e2e",
+    "cy:open": "cypress open --project ./e2e"
   },
   "repository": {
     "type": "git",
@@ -60,6 +62,7 @@
     "yup": "^0.28.4"
   },
   "devDependencies": {
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "@fullhuman/postcss-purgecss": "^2.1.2",
     "@redux-saga/simple-saga-monitor": "^1.1.2",
     "@types/express": "^4.17.6",
@@ -70,6 +73,8 @@
     "@types/yup": "^0.28.0",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
+    "cypress": "^4.5.0",
+    "cypress-react-unit-test": "^4.1.0",
     "eslint": "^6.8.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-loader": "^4.0.2",

@@ -2,6 +2,7 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 import { useI18n } from "../../hooks";
 import { actionUnauthenticate } from "../../../store/global/actions";
+import { authProvider } from "../../auth";
 
 const defaultClass = "cursor-pointer";
 export const LogoutLink = ({ className, ...props }: React.LinkHTMLAttributes<{}>): JSX.Element => {
@@ -9,7 +10,8 @@ export const LogoutLink = ({ className, ...props }: React.LinkHTMLAttributes<{}>
   const dispatch = useDispatch();
 
   const onClick = (): void => {
-    dispatch(actionUnauthenticate);
+    authProvider.logout()
+      .then(() => dispatch(actionUnauthenticate));
   };
 
   return (

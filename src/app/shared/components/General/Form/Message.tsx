@@ -4,7 +4,7 @@ type Props = React.HTMLAttributes<HTMLSpanElement> & {
   readonly message: string
 };
 
-const ErrorMessage: React.FunctionComponent<Props> = ({ className, message, ...props }) => {
+export const ErrorMessage: React.FunctionComponent<Props> = ({ className, message, ...props }) => {
 
   const spanClass = className || "text-error";
 
@@ -14,5 +14,3 @@ const ErrorMessage: React.FunctionComponent<Props> = ({ className, message, ...p
     </span>
   );
 };
-
-export default ErrorMessage;

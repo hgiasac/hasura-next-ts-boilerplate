@@ -47,6 +47,18 @@ npm run deploy
 npm run clean
 ```
 
+### Testing
+
+Use [Cypress testing framework](https://www.cypress.io/)
+Create new test files in `cypress/integration` folder
+Run test command:
+
+```bash
+npm test 
+# end to end test
+npm run cy:open
+```
+
 ## Important
 
 - The empty `placeholder.html` file is so Firebase Hosting does not error on an empty `public/` folder and still hosts at the Firebase project URL.

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FormControlProps } from "./util";
-import ErrorMessage from "./Message";
+import { ErrorMessage } from "./Message";
 
 type InputProps = FormControlProps;
 type InputComponent = React.InputHTMLAttributes<HTMLInputElement> & InputProps;
