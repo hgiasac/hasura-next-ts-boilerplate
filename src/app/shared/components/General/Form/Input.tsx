@@ -1,5 +1,6 @@
 import * as React from "react";
-import { FormControlProps, getErrorMessage } from "./util";
+import { FormControlProps } from "./util";
+import ErrorMessage from "./Message";
 
 type InputProps = FormControlProps;
 type InputComponent = React.InputHTMLAttributes<HTMLInputElement> & InputProps;
@@ -11,9 +12,7 @@ export const Input =
         <input ref={ref} name={name} {...props} />
       </div>
       {name && errors && errors[name] ? (
-        <span className="text-error">
-          {getErrorMessage(errors[name])}
-        </span>
+        <ErrorMessage message={errors[name]} />
       ) : null}
     </div>
   ));

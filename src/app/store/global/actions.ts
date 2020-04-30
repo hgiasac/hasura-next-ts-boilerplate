@@ -1,3 +1,4 @@
+import { AuthUser } from "../../shared/auth";
 import * as types from "./types";
 
 export const actionOpenMobileSidebar: types.OpenMobileSidebarAction =
@@ -5,3 +6,12 @@ export const actionOpenMobileSidebar: types.OpenMobileSidebarAction =
 
 export const actionCloseMobileSidebar: types.CloseMobileSidebarAction =
   ({ type: types.CLOSE_MOBILE_SIDEBAR });
+
+export const actionAuthenticate: (authUser: AuthUser) => types.AuthenticateAction =
+  (authUser) => ({
+    type: types.AUTHENTICATE,
+    payload: authUser
+  });
+
+export const actionUnauthenticate: types.UnauthenticateAction =
+  ({ type: types.UNAUTHENTICATE });

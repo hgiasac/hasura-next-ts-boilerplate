@@ -61,6 +61,7 @@ module.exports = {
     "rules": {
         "functional/no-return-void": 0,
         "functional/functional-parameters": 0,
+        "functional/no-try-statement": 0,
         "functional/no-expression-statement": 0,
         "functional/no-conditional-statement": 0,
         "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -182,6 +183,7 @@ module.exports = {
         ],
         "id-match": "error",
         "import/no-default-export": "off",
+        "import/no-named-as-default": "off",
         "import/no-extraneous-dependencies": [
             "off",
             {

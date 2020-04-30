@@ -7,7 +7,8 @@ import "../styles/tailwind.css";
 import App, { AppInitialProps, AppContext } from "next/app";
 import { END } from "redux-saga";
 import { reduxWrapper } from "../store";
-import { I18n } from "../shared/i18n";
+import { I18n } from "../shared/vendor/i18n";
+import ConnectedLayout from "../shared/components/Layout/ConntectedLayout";
 
 class WrappedApp extends App<AppInitialProps> {
   public static readonly getInitialProps = async ({ Component, ctx }: AppContext): Promise<any> => {
@@ -34,7 +35,9 @@ class WrappedApp extends App<AppInitialProps> {
 
     return (
       <I18n lngDict={pageProps.lngDict} locale={pageProps.lng}>
-        <Component {...pageProps} />
+        <ConnectedLayout>
+          <Component {...pageProps} />
+        </ConnectedLayout>
       </I18n>
     );
   }

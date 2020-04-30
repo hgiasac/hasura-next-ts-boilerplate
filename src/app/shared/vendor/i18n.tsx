@@ -1,14 +1,15 @@
 /* eslint-disable functional/immutable-data */
 import * as React from "react";
 import rosetta from "rosetta";
-import EN from "../locales/en.json";
-import { AnyObject } from "./types";
+import EN from "../../locales/en.json";
+// import VI from "../../locales/vi.json";
+import { AnyObject } from "../types";
 // import rosetta from 'rosetta/debug';
 
 const i18n = rosetta();
-const { createContext, useState, useRef, useEffect, useContext } = React;
+const { createContext, useState, useRef, useEffect } = React;
 
-type TranslateFunction = (key: string | readonly (string | number)[], params?: any, lang?: string) => string;
+export type TranslateFunction = (key: string | readonly (string | number)[], params?: any, lang?: string) => string;
 type LocaleFunction = (l: string, dict: AnyObject) => void;
 
 export type I18nState = {
@@ -73,6 +74,4 @@ export function I18n({ children, locale, lngDict }): JSX.Element {
   );
 }
 
-export function useI18n(): I18nState {
-  return useContext(I18nContext);
-}
+export default i18n;

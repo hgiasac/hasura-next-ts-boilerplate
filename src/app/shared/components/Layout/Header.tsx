@@ -1,19 +1,51 @@
 import Link from "next/link";
 import * as React from "react";
-import { connect, MapDispatchToProps } from "react-redux";
+import { connect, MapDispatchToProps, useSelector } from "react-redux";
 import { actionOpenMobileSidebar } from "../../../store/global/actions";
 import { IconButton } from "../General/Button";
 import { OpenMobileSidebarAction } from "../../../store/global/types";
+import { AppState } from "../../../store/types";
+import { useI18n } from "../../hooks";
+import { LogoutLink } from "../Auth/LogoutLink";
 
 type IDispatchProps = {
   readonly openMobileSidebar: () => OpenMobileSidebarAction
 };
 
 type HeaderProps = IDispatchProps;
+type NavLinkProps = {
+  readonly title: string
+  readonly route: string
+};
+
+const aClass = "block text-white";
+const liClass = "mt-3 md:mt-0 md:ml-6";
+
+const NavLink: React.FunctionComponent<NavLinkProps> = ({ title, route }) => (
+
+  <li className={liClass}>
+    <Link href={route}>
+      <a className={aClass}>
+        {title}
+      </a>
+    </Link>
+  </li>
+);
 
 const Header: React.FunctionComponent<HeaderProps> = () => {
 
   const [isExpanded, toggleExpansion] = React.useState(false);
+  const isAuthenticated = useSelector((state: AppState) => state.global.isAuthenticated);
+  const i18n = useI18n();
+
+  const authRoute = !isAuthenticated
+    ? (<NavLink title={i18n.t("general.login")} route="/auth/login" />)
+    : (
+      <li className={liClass}>
+        <LogoutLink className={aClass} />
+      </li>
+    );
+
   const listClass =
     `${isExpanded ? "block" : "hidden"
     } md:flex flex-col md:flex-row md:items-center md:justify-center text-sm w-full md:w-auto`;
@@ -40,16 +72,15 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
           className={listClass}
         >
           {[
-            { title: "Home", route: "/" },
-            { title: "About", route: "/about" },
-            { title: "Login", route: "/auth/login" }
+            { title: "pageTitle.home", route: "/" },
+            { title: "pageTitle.about", route: "/about" }
           ].map((navigationItem) => (
-            <li className="mt-3 md:mt-0 md:ml-6" key={navigationItem.title}>
-              <Link href={navigationItem.route}>
-                <a className="block text-white">{navigationItem.title}</a>
-              </Link>
-            </li>
+            <NavLink key={navigationItem.title}
+              title={i18n.t(navigationItem.title)}
+              route={navigationItem.route}
+            ></NavLink>
           ))}
+          {authRoute}
         </ul>
       </div>
     </header>

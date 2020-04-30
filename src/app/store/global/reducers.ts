@@ -1,16 +1,30 @@
 import { Reducer } from "redux";
-import { CLOSE_MOBILE_SIDEBAR, GlobalAction, GlobalState, OPEN_MOBILE_SIDEBAR } from "./types";
+import * as types from "./types";
 
-export const initialGlobalState: GlobalState = {
-  mobileSidebarVisibility: false
+export const initialGlobalState: types.GlobalState = {
+  mobileSidebarVisibility: false,
+  isAuthenticated: false,
+  authUser: null
 };
 
-const reducer: Reducer<GlobalState, GlobalAction> = (state = initialGlobalState, action) => {
+const reducer: Reducer<types.GlobalState, types.GlobalAction> = (state = initialGlobalState, action) => {
   switch (action.type) {
-    case OPEN_MOBILE_SIDEBAR:
+    case types.OPEN_MOBILE_SIDEBAR:
       return { ...state, mobileSidebarVisibility: true };
-    case CLOSE_MOBILE_SIDEBAR:
+    case types.CLOSE_MOBILE_SIDEBAR:
       return { ...state, mobileSidebarVisibility: false };
+    case types.AUTHENTICATE:
+      return {
+        ...state,
+        isAuthenticated: true,
+        authUser: action.payload
+      };
+    case types.UNAUTHENTICATE:
+      return {
+        ...state,
+        isAuthenticated: false,
+        authUser: null
+      };
     default:
       return state;
   }
