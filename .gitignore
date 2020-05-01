@@ -105,3 +105,9 @@ dist
 
 # Firebase cache
 .firebase/
+
+# Cypress outputs 
+cypress/videos
+cypress/screenshots
+.nyc_output
+coverage
