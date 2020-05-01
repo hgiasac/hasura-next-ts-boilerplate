@@ -7,10 +7,6 @@
     "**/*.tsx"
   ],
   "env": {
-    "webpackFilename": "cypress/plugins/cy-ts-preprocessor.js",
-    "DATA_SCHEME": "http",
-    "DATA_DOMAIN": "localhost:8080",
-    "AUTH_SESSION_KEY": "next-auth",
-    "HASURA_GRAPHQL_ADMIN_SECRET": "hasura"
+    "webpackFilename": "cypress/plugins/cy-ts-preprocessor.js"
   }
 }
