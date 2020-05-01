@@ -7,15 +7,17 @@ import {
   HttpLink,
   InMemoryCache,
   ApolloProvider,
-  createHttpLink,
   split
 } from "@apollo/client";
 import _withApollo from "next-with-apollo";
 import { WebSocketLink } from "@apollo/link-ws";
 import { OperationDefinitionNode } from "graphql";
+import { setContext } from "@apollo/link-context";
 import { Config } from "../config";
-import { XHasuraAdminSecret, XHasuraClientName } from "../types";
+import { XHasuraClientName, AuthorizationHeader } from "../types";
+import { AuthProvider } from "../auth";
 
+export const AuthBearer = "Bearer";
 const apolloRenderer = {
   render: ({ Page, props }) => (
     <ApolloProvider client={props.apollo}>
@@ -35,75 +37,49 @@ const splitLink = (httpLink: ApolloLink, wsLink: WebSocketLink): ApolloLink => s
   httpLink
 );
 
-export const withApollo = _withApollo(
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const createApolloHook = (auth: AuthProvider<any, any>) => _withApollo(
   ({ initialState }) => {
 
-    const httpLink = createHttpLink({
-      uri: Config.httpDataHost,
-      headers: {
-        [XHasuraClientName]: Config.hasuraClientName
-      }
-    });
-
-    const wsLink = new WebSocketLink({
-      uri: Config.wsDataHost,
-      options: {
-        reconnect: true,
-        connectionParams: {
-          headers: {
-            [XHasuraClientName]: Config.hasuraClientName
-          }
-        }
-      }
-    });
-    const link = splitLink(httpLink, wsLink);
-
-    return new ApolloClient({
-      link,
-      cache: new InMemoryCache().restore(initialState || {})
-    });
-  },
-  apolloRenderer
-);
-
-export const withAuthApollo = _withApollo(
-  ({ initialState }) => {
-
-    const authLink = new ApolloLink((operation, forward) => {
-      operation.setContext(({ headers }) => ({
+    const authLink = setContext((_, { headers }) => auth.getIdToken()
+      .then((token) => ({
         headers: {
-          [XHasuraAdminSecret]: Config.adminSecret,
-          [XHasuraClientName]: Config.hasuraClientName,
+          [AuthorizationHeader]: token ? `${AuthBearer} ${token}` : null,
           ...headers
         }
-      }));
-
-      return forward(operation);
-    });
+      })));
 
     const httpLink = from([
       authLink,
       new HttpLink({
-        uri: Config.httpDataHost
+        uri: Config.httpDataHost,
+        headers: {
+          [XHasuraClientName]: Config.hasuraClientName
+        }
       })
     ]);
 
-    const wsLink = new WebSocketLink({
+    const wsLink = (): WebSocketLink => new WebSocketLink({
       uri: Config.wsDataHost,
       options: {
         reconnect: true,
-        connectionParams: {
+        connectionParams: () => auth.getIdToken().then((token) => ({
           headers: {
-            [XHasuraAdminSecret]: Config.adminSecret,
+            [AuthorizationHeader]: token ? `${AuthBearer} ${token}` : null,
             [XHasuraClientName]: Config.hasuraClientName
           }
+        })),
+        lazy: true,
+        connectionCallback: (error) => {
+          console.error("connection error: ", error);
         }
       }
     });
 
     return new ApolloClient({
-      link: splitLink(httpLink, wsLink),
-      cache: new InMemoryCache().restore(initialState || {})
+      link: process.browser ? splitLink(httpLink, wsLink()) : httpLink,
+      cache: new InMemoryCache().restore(initialState || {}),
+      version: Config.version
     });
   },
   apolloRenderer

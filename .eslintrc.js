@@ -21,7 +21,7 @@ module.exports = {
     "plugins": [
         "@typescript-eslint",
         "functional",
-        "import"
+        // "import"
     ],
     "settings": {
         "import/parsers": {
@@ -40,7 +40,7 @@ module.exports = {
             // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
             // default to latest and warns if missing
             // It will default to "detect" in the future
-        },
+        }
     },
     "extends": [
 
@@ -51,13 +51,15 @@ module.exports = {
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:functional/external-recommended",
         "plugin:functional/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings"
+        // "plugin:import/errors",
+        // "plugin:import/warnings",
+        // "plugin:import/typescript"
     ],
     "rules": {
         "functional/no-return-void": 0,
         "functional/functional-parameters": 0,
         "functional/no-try-statement": 0,
+        "functional/no-throw-statement": 0,
         "functional/no-expression-statement": 0,
         "functional/no-conditional-statement": 0,
         "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -178,16 +180,17 @@ module.exports = {
             "undefined"
         ],
         "id-match": "error",
-        "import/no-default-export": "off",
-        "import/no-named-as-default": "off",
-        "import/no-extraneous-dependencies": [
-            "off",
-            {
-                "devDependencies": false
-            }
-        ],
-        "import/no-internal-modules": "off",
-        "import/order": "error",
+        // "import/no-default-export": "off",
+        // "import/no-named-as-default": "off",
+        // "import/no-extraneous-dependencies": [
+        //     "off",
+        //     {
+        //         "devDependencies": false
+        //     }
+        // ],
+        // "import/no-internal-modules": "off",
+        // "import/order": "error",
+        // "import/name": "off",
         "linebreak-style": [
             "error",
             "unix"

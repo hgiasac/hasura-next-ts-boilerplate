@@ -15,3 +15,6 @@ export const actionAuthenticate: (authUser: AuthUser) => types.AuthenticateActio
 
 export const actionUnauthenticate: types.UnauthenticateAction =
   ({ type: types.UNAUTHENTICATE });
+
+export const actionInitialLoad = (payload: boolean): types.InitialLoadAction =>
+  ({ type: types.INITIAL_LOAD, payload });

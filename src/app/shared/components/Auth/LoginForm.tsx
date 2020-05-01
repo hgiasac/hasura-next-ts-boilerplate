@@ -1,10 +1,11 @@
 import * as React from "react";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
+import { useApolloClient } from "@apollo/client";
 import { Input } from "../General/Form";
 import { useI18n, useYupForm } from "../../hooks";
 import { actionAuthenticate } from "../../../store/global/actions";
-import { authProvider } from "../../auth";
+import { withAuthProvider } from "../../auth";
 
 type LoginData = {
   readonly email: string
@@ -25,6 +26,7 @@ const LoginFormInternal: React.FunctionComponent<LoginFormProps> = ({
 }) => {
 
   const i18n = useI18n();
+  const apolloClient = useApolloClient();
 
   const { register, handleSubmit, errors } = useYupForm<LoginData>({
     validationSchema: schema
@@ -32,7 +34,7 @@ const LoginFormInternal: React.FunctionComponent<LoginFormProps> = ({
 
   const dispath = useDispatch();
   const onSuccess = (values: LoginData): void => {
-    authProvider.login({
+    withAuthProvider({ apolloClient }).login({
       email: values.email,
       password: values.password
     }).then((user) => {

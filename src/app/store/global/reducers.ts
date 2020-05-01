@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 import * as types from "./types";
 
 export const initialGlobalState: types.GlobalState = {
-  mobileSidebarVisibility: false,
+  initialLoading: true,
   isAuthenticated: false,
   authUser: null
 };
@@ -24,6 +24,11 @@ const reducer: Reducer<types.GlobalState, types.GlobalAction> = (state = initial
         ...state,
         isAuthenticated: false,
         authUser: null
+      };
+    case types.INITIAL_LOAD:
+      return {
+        ...state,
+        initialLoading: action.payload
       };
     default:
       return state;

@@ -1,5 +1,5 @@
-import _authProvider from "./basic";
+import _withAuthProvider from "./firebase";
 export * from "./types";
-export * from "./basic";
+export * from "./firebase";
 
-export const authProvider = _authProvider;
+export const withAuthProvider = _withAuthProvider;

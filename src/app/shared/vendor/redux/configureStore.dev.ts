@@ -1,7 +1,6 @@
 /* eslint-disable functional/functional-parameters */
 /* eslint-disable functional/immutable-data */
 /* eslint-disable functional/no-expression-statement */
-/* eslint-disable import/named */
 import sagaMonitor from "@redux-saga/simple-saga-monitor";
 import { applyMiddleware, createStore, Store } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";

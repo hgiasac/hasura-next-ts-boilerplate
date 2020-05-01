@@ -1,7 +1,9 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import { actionUnauthenticate, actionAuthenticate } from "../../../store/global/actions";
-import { authProvider } from "../../auth";
+import { useApolloClient } from "@apollo/client";
+import { actionUnauthenticate, actionAuthenticate, actionInitialLoad } from "../../../store/global/actions";
+import { withAuthProvider } from "../../auth";
+import { FirebaseApp } from "../../vendor/firebase";
 
 type Props = {};
 
@@ -11,17 +13,29 @@ const ConnectedLayout: React.FunctionComponent<Props> = ({
 }) => {
 
   const dispatch = useDispatch();
+  const apolloClient = useApolloClient();
 
   React.useEffect(() => {
-    // check authentication from cache
-    authProvider.getUser().then((user) => {
 
-      if (user) {
-        dispatch(actionAuthenticate(user));
-      } else {
-        dispatch(actionUnauthenticate);
+    FirebaseApp().auth().onAuthStateChanged((authUser) => {
+      if (!authUser) {
+        dispatch(actionInitialLoad(false));
+
+        return dispatch(actionUnauthenticate);
       }
+
+      // check authentication from cache
+      withAuthProvider({ apolloClient }).getUser()
+        .then((user) => {
+          dispatch(actionInitialLoad(false));
+          if (user) {
+            dispatch(actionAuthenticate(user));
+          } else {
+            return dispatch(actionUnauthenticate);
+          }
+        });
     });
+
   }, []);
 
   return (

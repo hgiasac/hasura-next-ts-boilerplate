@@ -45,6 +45,10 @@ input[type=submit] {
   }
 }
 
+.text-primary {
+  @apply text-teal-500;
+}
+
 .text-error {
   @apply text-red-700;
 }

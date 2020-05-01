@@ -1,6 +1,5 @@
 /* eslint-disable functional/no-class */
 /* eslint-disable functional/no-this-expression */
-/* eslint-disable import/named */
 import * as React from "react";
 import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
 import "../styles/tailwind.css";
@@ -9,6 +8,7 @@ import { END } from "redux-saga";
 import { reduxWrapper } from "../store";
 import { I18n } from "../shared/vendor/i18n";
 import ConnectedLayout from "../shared/components/Layout/ConntectedLayout";
+import { withApollo } from "../shared/hooks";
 
 class WrappedApp extends App<AppInitialProps> {
   public static readonly getInitialProps = async ({ Component, ctx }: AppContext): Promise<any> => {
@@ -43,4 +43,4 @@ class WrappedApp extends App<AppInitialProps> {
   }
 }
 
-export default reduxWrapper.withRedux(WrappedApp);
+export default reduxWrapper.withRedux(withApollo(WrappedApp));

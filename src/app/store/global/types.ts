@@ -5,15 +5,17 @@ export const OPEN_MOBILE_SIDEBAR = "OPEN_MOBILE_SIDEBAR";
 export const CLOSE_MOBILE_SIDEBAR = "CLOSE_MOBILE_SIDEBAR";
 export const AUTHENTICATE = "AUTHENTICATE";
 export const UNAUTHENTICATE = "UNAUTHENTICATE";
+export const INITIAL_LOAD = "INITIAL_LOAD";
 
 export type GlobalActionType
   = typeof OPEN_MOBILE_SIDEBAR
   | typeof CLOSE_MOBILE_SIDEBAR
   | typeof AUTHENTICATE
-  | typeof UNAUTHENTICATE;
+  | typeof UNAUTHENTICATE
+  | typeof INITIAL_LOAD;
 
 export type GlobalState = {
-  readonly mobileSidebarVisibility: boolean
+  readonly initialLoading: boolean
   readonly isAuthenticated: boolean
   readonly authUser: AuthUser | null
 };
@@ -26,9 +28,14 @@ export type AuthenticateAction = {
 export type OpenMobileSidebarAction = ReadonlyAction<typeof OPEN_MOBILE_SIDEBAR>;
 export type CloseMobileSidebarAction = ReadonlyAction<typeof CLOSE_MOBILE_SIDEBAR>;
 export type UnauthenticateAction = ReadonlyAction<typeof UNAUTHENTICATE>;
+export type InitialLoadAction = {
+  readonly type: typeof INITIAL_LOAD
+  readonly payload: boolean
+};
 
 export type GlobalAction
   = OpenMobileSidebarAction
   | CloseMobileSidebarAction
   | AuthenticateAction
-  | UnauthenticateAction;
+  | UnauthenticateAction
+  | InitialLoadAction;

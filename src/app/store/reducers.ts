@@ -1,4 +1,3 @@
-/* eslint-disable import/named */
 import { combineReducers } from "redux";
 import { HYDRATE } from "next-redux-wrapper";
 import { Reducer } from "react";
