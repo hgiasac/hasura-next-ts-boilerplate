@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import * as React from "react";
 import { mount } from "cypress-react-unit-test";
 import { ErrorMessage } from "@app/shared/components/General/Form/Message";

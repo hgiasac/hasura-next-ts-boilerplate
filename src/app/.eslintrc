@@ -1,0 +1,20 @@
+{
+    "overrides": [
+        {
+            "env": {
+                "browser": true,
+                "es6": true,
+                "node": true
+            },
+            "files": [
+                "*.js",
+                "*.ts",
+                "*.tsx"
+            ],
+            "parserOptions": {
+                "project": "src/app/tsconfig.json",
+                "sourceType": "module"
+            }
+        }
+    ]
+}

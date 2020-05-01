@@ -1,11 +1,12 @@
+/* eslint-disable functional/no-throw-statement */
+/* eslint-disable functional/no-conditional-statement */
 function assertEnv(value: string | undefined, key: string): string {
 
-  if (!value) {
-    // eslint-disable-next-line functional/no-throw-statement
-    throw new Error(`Environment ${key} doesn't exist`);
+  if (value) {
+    return value;
   }
 
-  return value;
+  throw new Error(`Environment ${key} doesn't exist`);
 }
 
 const DATA_SCHEME = process.env.DATA_SCHEME || "http";
