@@ -1,15 +1,10 @@
-/// <reference types="cypress" />
-
 import * as React from "react";
 import { mount } from "cypress-react-unit-test";
-
-const Hello = (): JSX.Element => (
-  <span>{"Hello World!"}</span>
-);
+import { ErrorMessage } from "@app/shared/components/General/Form/Message";
 
 describe("HelloWorld component", () => {
   it("works", () => {
-    mount(<Hello />);
+    mount(<ErrorMessage message="Hello World!" />);
     // now use standard Cypress commands
     cy.contains("Hello World!").should("be.visible");
   });

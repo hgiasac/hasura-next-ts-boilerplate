@@ -5,7 +5,7 @@ module.exports = {
         "node": true
     },
     "parserOptions": {
-        "project": "src/app/tsconfig.json",
+        "project": "src/functions/tsconfig.json",
         "sourceType": "module"
     }
 };

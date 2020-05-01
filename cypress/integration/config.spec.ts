@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 process.env = Cypress.env();
 import { Config } from "@app/shared/config";
 

@@ -1,5 +1,5 @@
-import { AnyObject } from "./types";
-import { Config } from "./config";
+import { Config } from "../config";
+import { AuthProvider } from "./types";
 
 export type LoginInput = {
   readonly email: string
@@ -10,15 +10,7 @@ export type AuthUser = {
   readonly email: string
 };
 
-export type AuthProvider<U extends AnyObject> = {
-  readonly login: (input: LoginInput) => Promise<U>
-  readonly logout: () => Promise<void>
-  readonly getUser: () => Promise<U | null>
-  readonly getIdToken: () => Promise<string | null>
-  readonly isAuthenticated: () => Promise<boolean>
-};
-
-export const authProvider: AuthProvider<AuthUser> = {
+const authProvider: AuthProvider<AuthUser, LoginInput> = {
   login: ({ email }) => {
     localStorage.setItem(Config.authSessionKey, email);
 
@@ -45,3 +37,5 @@ export const authProvider: AuthProvider<AuthUser> = {
     !!localStorage.getItem(Config.authSessionKey)
   )
 };
+
+export default authProvider;

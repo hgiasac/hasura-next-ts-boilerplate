@@ -48,6 +48,7 @@
   },
   "pageTitle": {
     "home": "Home",
-    "login": "Login"
+    "login": "Login",
+    "about": "About Us"
   }
 }

@@ -9,7 +9,3 @@ export type AnyObject = { readonly [key: string]: any };
 export type StoreProps = {
   readonly store: Store
 };
-
-// export type WithTranslationProps = {
-//   readonly t: TFunction
-// };
