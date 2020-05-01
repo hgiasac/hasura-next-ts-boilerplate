@@ -8,6 +8,19 @@ export type LoginInput = {
   readonly password: string
 };
 
+export type CreateFirebaseUserInput = LoginInput;
+
+export type RegisterUserInput = LoginInput & {
+  readonly firstName: string
+  readonly lastName: string
+};
+
+export type CreateProfileInput = {
+  readonly email: string
+  readonly firstName: string
+  readonly lastName: string
+};
+
 export type AuthUser = {
   readonly id: string
   readonly email: string
@@ -46,7 +59,55 @@ async function getProfile(apolloClient: ApolloClient<any>, fetchPolicy: FetchPol
   return results.length ? results[0] : null;
 }
 
-export default function ({ apolloClient }: AuthContext = {}): AuthProvider<AuthUser, LoginInput> {
+async function createFirebaseUser(input: CreateFirebaseUserInput): Promise<firebase.User> {
+
+  const cred = await FirebaseApp().auth()
+    .createUserWithEmailAndPassword(input.email, input.password)
+    .then(() => FirebaseApp().auth()
+      .signInWithEmailAndPassword(input.email, input.password))
+    .catch((err: firebase.auth.Error) => {
+      // fallback if firebase user exists but not in our backend
+      switch (err.code) {
+        case "auth/email-already-in-use":
+          return FirebaseApp().auth()
+            .signInWithEmailAndPassword(input.email, input.password)
+            .catch(() => Promise.reject(err));
+        default:
+          throw err;
+      }
+    });
+
+  return <firebase.User>cred.user;
+}
+
+export async function createProfile(apolloClient: ApolloClient<any>, input: CreateProfileInput): Promise<AuthUser> {
+
+  const mutation = gql`
+    mutation createProfile($objects: [me_insert_input!]!) {
+      insert_me(objects: $objects) {
+        returning {
+          id
+          email
+          firstName
+          lastName
+          role
+        }
+      }
+    }
+  `;
+
+  const results = await apolloClient.mutate({
+    mutation,
+    variables: {
+      objects: [input]
+    }
+  }).then(({ data }) => data.insert_me.returning as readonly AuthUser[]);
+
+  return results[0];
+
+}
+
+export default function ({ apolloClient }: AuthContext = {}): AuthProvider<AuthUser, LoginInput, RegisterUserInput> {
 
   const getUser: (forceRefresh?: boolean) => Promise<Maybe<AuthUser>> = (forceRefresh) => {
 
@@ -97,6 +158,22 @@ export default function ({ apolloClient }: AuthContext = {}): AuthProvider<AuthU
         ? Promise.resolve(null)
         : user.getIdToken(forceRefresh);
     },
-    isAuthenticated: () => FirebaseApp().auth().currentUser !== null
+    isAuthenticated: () => FirebaseApp().auth().currentUser !== null,
+    sendPasswordResetEmail: (email) => FirebaseApp().auth()
+      .sendPasswordResetEmail(email),
+    verifyPasswordResetCode: (code) => FirebaseApp().auth()
+      .verifyPasswordResetCode(code),
+    confirmPasswordReset: (code, newPassword) => FirebaseApp().auth()
+      .confirmPasswordReset(code, newPassword),
+    register: async (input) => {
+      const client = assertApolloClient("register");
+      await createFirebaseUser(input);
+
+      return createProfile(client, {
+        email: input.email,
+        firstName: input.firstName,
+        lastName: input.lastName
+      });
+    }
   };
 }

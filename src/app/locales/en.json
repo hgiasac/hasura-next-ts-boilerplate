@@ -3,9 +3,18 @@
     "email": "Email",
     "password": "Password",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "firstName": "First Name",
+    "lastName": "Last Name"
   },
-  "messsage": {},
+  "message": {
+    "resetPasswordSuccess": "We have just sent a link to reset password to your email ({{email}}). This link is valid for {{expiry}} hour(s)!",
+    "emailNotFound": "Email doesn't exist",
+    "userNotFound": "User doesn't exist",
+    "wrongPassword": "Email or password is incorrect",
+    "loginBacklink": "Already registered? Back to login",
+    "existedEmail": "The email address is already in use by another account."
+  },
   "validation": {
     "mixed": {
       "default": "{{path}} is invalid",
@@ -49,6 +58,8 @@
   "pageTitle": {
     "home": "Home",
     "login": "Login",
-    "about": "About Us"
+    "about": "About us",
+    "resetPassword": "Reset password",
+    "register": "Register"
   }
 }

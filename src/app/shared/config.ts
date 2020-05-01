@@ -19,6 +19,7 @@ export const Config = {
   hasuraClientName: process.env.HASURA_CLIENT_NAME,
   version: process.env.VERSION,
   debug: process.env.NODE_ENV !== "production",
+  resetPasswordExpiry: process.env.RESET_PASSWORD_EXPIRY ? parseInt(process.env.RESET_PASSWORD_EXPIRY, 10) : 1,
   firebase: {
     apiKey: assertEnv(process.env.FIREBASE_API_KEY, "FIREBASE_API_KEY"),
     authDomain: assertEnv(process.env.FIREBASE_AUTH_DOMAIN, "FIREBASE_AUTH_DOMAIN"),

@@ -3,9 +3,18 @@
     "email": "Email",
     "password": "Mật khẩu",
     "login": "Đăng nhập",
-    "logout": "Đăng ký"
+    "logout": "Đăng ký",
+    "firstName": "Tên",
+    "lastName": "Họ"
   },
-  "messsage": {},
+  "message": {
+    "resetPasswordSuccess": "Chúng tôi đã gửi đường dẫn khôi phục mật khẩu tới email của bạn ({{email}}). Đường dẫn sẽ hết hạn sau {{expiry}} giờ!",
+    "emailNotFound": "Email không tồn tại",
+    "userNotFound": "Tài khoản không tồn tại",
+    "wrongPassword": "Email hoặc mật khẩu khôngn đúng",
+    "loginBacklink": "Đã đăng ký? Trở về đăng nhập",
+    "existedEmail": "Email đã bị tài khoản khác sử dụng"
+  },
   "validation": {
     "mixed": {
       "default": "{{path}} không hợp lệ",
@@ -49,6 +58,8 @@
   "pageTitle": {
     "home": "Trang chủ",
     "login": "Đăng nhập",
-    "about": "Về chúng tôi"
+    "about": "Về chúng tôi",
+    "resetPassword": "Khôi phục mật khẩu",
+    "register": "Đăng ký"
   }
 }

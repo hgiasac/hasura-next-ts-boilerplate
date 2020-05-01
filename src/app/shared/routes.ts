@@ -9,7 +9,19 @@ export const ROUTES = {
     title: "pageTitle.home"
   } as RouteRecord,
   login: {
-    path: "/",
+    path: "/auth/login",
     title: "pageTitle.login"
+  } as RouteRecord,
+  register: {
+    path: "/auth/register",
+    title: "pageTitle.register"
+  } as RouteRecord,
+  resetPassword: {
+    path: "/auth/reset-password",
+    title: "pageTitle.resetPassword"
+  } as RouteRecord,
+  confirmResetPassword: {
+    path: "/auth/confirm-reset-password",
+    title: "pageTitle.resetPassword"
   } as RouteRecord
 };

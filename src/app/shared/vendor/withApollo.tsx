@@ -38,7 +38,7 @@ const splitLink = (httpLink: ApolloLink, wsLink: WebSocketLink): ApolloLink => s
 );
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const createApolloHook = (auth: AuthProvider<any, any>) => _withApollo(
+export const createApolloHook = (auth: AuthProvider<any, any, any>) => _withApollo(
   ({ initialState }) => {
 
     const authLink = setContext((_, { headers }) => auth.getIdToken()

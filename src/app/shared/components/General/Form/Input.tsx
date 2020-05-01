@@ -6,10 +6,10 @@ type InputProps = FormControlProps;
 type InputComponent = React.InputHTMLAttributes<HTMLInputElement> & InputProps;
 
 export const Input =
-  React.forwardRef<HTMLInputElement, InputComponent>(({ errors, name, ...props }, ref) => (
+  React.forwardRef<HTMLInputElement, InputComponent>(({ errors, name, type, ...props }, ref) => (
     <div className="mb-4">
-      <div className="mb-4">
-        <input ref={ref} name={name} {...props} />
+      <div className="mb-2">
+        <input ref={ref} name={name} type={type || "text"} {...props} />
       </div>
       {name && errors && errors[name] ? (
         <ErrorMessage message={errors[name]} />

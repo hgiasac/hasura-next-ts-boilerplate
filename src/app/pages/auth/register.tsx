@@ -1,14 +1,14 @@
 import * as React from "react";
 import Router from "next/router";
 import Link from "next/link";
-import { LoginForm } from "../../shared/components/Auth/LoginForm";
+import { RegisterForm } from "../../shared/components/Auth/RegisterForm";
 import { Layout } from "../../shared/components/Layout/Layout";
 import { ROUTES } from "../../shared/routes";
 import { useI18n, useUser } from "../../shared/hooks";
 
-const LoginPage = (): JSX.Element | null => {
+const RegisterPage = (): JSX.Element | null => {
 
-  const titleKey = "pageTitle.login";
+  const titleKey = "pageTitle.register";
   const i18n = useI18n();
   const user = useUser();
 
@@ -19,13 +19,10 @@ const LoginPage = (): JSX.Element | null => {
           <h1 className="mb-4">
             {i18n.t(titleKey)}
           </h1>
-          <LoginForm onSubmit={() => Router.push(ROUTES.home.path)} />
+          <RegisterForm onSubmit={() => Router.push(ROUTES.home.path)} />
           <div className="w-full flex justify-between mt-4">
-            <Link href={ROUTES.resetPassword.path}>
-              <a>{i18n.t("pageTitle.resetPassword")}</a>
-            </Link>
-            <Link href={ROUTES.register.path}>
-              <a>{i18n.t("pageTitle.register")}</a>
+            <Link href={ROUTES.login.path}>
+              <a>{i18n.t("message.loginBacklink")}</a>
             </Link>
           </div>
         </div>
@@ -34,4 +31,4 @@ const LoginPage = (): JSX.Element | null => {
   ) : null;
 };
 
-export default LoginPage;
+export default RegisterPage;
