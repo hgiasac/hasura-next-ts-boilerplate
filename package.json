@@ -11,10 +11,10 @@
     "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
     "build-app": "next build \"src/app\"",
     "build-public": "cpx \"src/app/public/**/*.*\" \"dist/public\" -C",
-    "build-functions": "tsc --project src/functions",
-    "lint-app": "tslint --project src/app",
+    "build-functions": "npm run lint-functions && tsc --project src/functions",
+    "lint-app": "eslint -c src/app/.eslintrc --ext .ts,.tsx src/app",
     "typecheck-app": "tsc --project src/app",
-    "lint-functions": "tslint --project src/functions",
+    "lint-functions": "eslint -c src/functions/.eslintrc.js --ext .ts,.tsx src/functions",
     "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
     "install-deps": "cd \"dist/functions\" && npm i",
     "stylelint": "npx stylelint '**/*.css'",
@@ -77,10 +77,19 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.19.0",
     "firebase-functions": "^3.6.1",
+    "husky": "^4.2.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": [
+        "npm run build-app",
+        "npm run build-functions"
+      ]
+    }
   }
 }
