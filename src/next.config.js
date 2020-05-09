@@ -3,7 +3,7 @@ const env = require("./env");
 
 module.exports = {
   env,
-  distDir: "../../dist/functions/next",
+  distDir: "../dist",
   webpack: (config, { dev }) => {
     const eslintRule = {
       test: /\.tsx?$/,
