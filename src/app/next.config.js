@@ -1,9 +1,15 @@
 // const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const env = require("./env");
+const withPWA = require('next-pwa')
 
-module.exports = {
+const config = {
   env,
   distDir: "../../dist/functions/next",
+  pwa: {
+    dest: "public",
+    register: true,
+    // skipWaiting: false
+  },
   webpack: (config, { dev }) => {
     const eslintRule = {
       test: /\.tsx?$/,
@@ -22,3 +28,5 @@ module.exports = {
     return config;
   }
 }
+module.exports = process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+  ? withPWA(config) : config;

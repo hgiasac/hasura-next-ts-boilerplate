@@ -2,7 +2,7 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 import { actionUnauthenticate, actionAuthenticate } from "../../../store/global/actions";
 import { authProvider } from "../../auth";
-
+// import registerServiceWorker from "../../service-worker";
 type Props = {};
 
 // this component initialize client side data 
@@ -22,6 +22,8 @@ const ConnectedLayout: React.FunctionComponent<Props> = ({
         dispatch(actionUnauthenticate);
       }
     });
+    // register service worker
+    // registerServiceWorker();
   }, []);
 
   return (

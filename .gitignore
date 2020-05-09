@@ -111,3 +111,7 @@ cypress/videos
 cypress/screenshots
 .nyc_output
 coverage
+
+# service worker
+**/public/precache.*.js
+**/public/sw.js
