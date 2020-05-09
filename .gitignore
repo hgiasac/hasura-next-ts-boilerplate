@@ -114,5 +114,5 @@ coverage
 
 # service worker
 **/public/precache.*.js
-**/public/workbox-*.js
-**/public/sw.js
+**/public/workbox-*
+**/public/sw.js*
