@@ -1,7 +1,4 @@
-/* purgecss start ignore */
 @import 'tailwindcss/base';
-
-/* purgecss end ignore */
 
 /* default styles */
 
@@ -53,5 +50,12 @@ input[type=submit] {
   @apply text-orange-700;
 }
 
+/* Start purging... */
 @import 'tailwindcss/components';
+
+/* Stop purging. */
+
+/* Start purging... */
 @import 'tailwindcss/utilities';
+
+/* Stop purging. */
