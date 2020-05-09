@@ -23,6 +23,10 @@ module.exports = {
         "functional",
         "import"
     ],
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "sourceType": "module"
+    },
     "settings": {
         "import/parsers": {
             "@typescript-eslint/parser": [".ts", ".tsx"]
