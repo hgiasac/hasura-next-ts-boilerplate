@@ -5,11 +5,11 @@ const withPWA = require('next-pwa')
 const config = {
   env,
   pwa: {
-    dest: "../public",
+    dest: "./public",
     register: true,
     // skipWaiting: false
   },
-  distDir: "../dist",
+  distDir: "./dist",
   webpack: (config, { dev }) => {
     const eslintRule = {
       test: /\.tsx?$/,
