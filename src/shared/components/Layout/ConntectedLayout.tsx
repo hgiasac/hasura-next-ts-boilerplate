@@ -5,7 +5,9 @@ import { actionUnauthenticate, actionAuthenticate, actionInitialLoad } from "../
 import { withAuthProvider } from "../../auth";
 import { FirebaseApp } from "../../vendor/firebase";
 
-type Props = {};
+type Props = {
+
+};
 
 // this component initialize client side data 
 const ConnectedLayout: React.FunctionComponent<Props> = ({
@@ -17,7 +19,7 @@ const ConnectedLayout: React.FunctionComponent<Props> = ({
 
   React.useEffect(() => {
 
-    FirebaseApp().auth().onAuthStateChanged((authUser) => {
+    void FirebaseApp().auth().onAuthStateChanged((authUser) => {
       if (!authUser) {
         dispatch(actionInitialLoad(false));
 
@@ -25,7 +27,7 @@ const ConnectedLayout: React.FunctionComponent<Props> = ({
       }
 
       // check authentication from cache
-      withAuthProvider({ apolloClient }).getUser()
+      void withAuthProvider({ apolloClient }).getUser()
         .then((user) => {
           dispatch(actionInitialLoad(false));
           if (user) {

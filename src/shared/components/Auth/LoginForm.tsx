@@ -40,7 +40,7 @@ const LoginFormInternal: React.FunctionComponent<LoginFormProps> = ({
   const onSuccess = (values: LoginData): void => {
     setSubmitting(true);
 
-    withAuthProvider({ apolloClient }).login({
+    void withAuthProvider({ apolloClient }).login({
       email: values.email,
       password: values.password
     }).then((user) => {

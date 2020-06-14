@@ -1,7 +1,6 @@
 /* eslint-disable functional/no-this-expression */
 /* eslint-disable functional/no-class */
-import Maybe from "graphql/tsutils/Maybe";
-import { AnyObject } from "../types";
+import { AnyObject, Maybe } from "../types";
 
 export type LoginFunction<U, L> = (input: L) => Promise<U>;
 export type LogoutFunction = () => Promise<void>;

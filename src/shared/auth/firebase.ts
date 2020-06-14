@@ -1,7 +1,7 @@
 import { FetchPolicy, gql, ApolloClient } from "@apollo/client";
-import Maybe from "graphql/tsutils/Maybe";
 import { FirebaseApp } from "../vendor/firebase";
 import { AuthProvider, UserNotFound } from "./types";
+import { Maybe } from "../types";
 
 export type LoginInput = {
   readonly email: string

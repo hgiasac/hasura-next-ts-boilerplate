@@ -6,18 +6,21 @@ import { actionUnauthenticate } from "../../../store/global/actions";
 import { withAuthProvider } from "../../auth";
 
 const defaultClass = "cursor-pointer";
-export const LogoutLink = ({ className, ...props }: React.LinkHTMLAttributes<{}>): JSX.Element => {
+type Props = {
+
+};
+export const LogoutLink = ({ className, ...props }: React.LinkHTMLAttributes<Props>): JSX.Element => {
   const i18n = useI18n();
   const dispatch = useDispatch();
   const apolloClient = useApolloClient();
 
   const onClick = (): void => {
-    withAuthProvider({ apolloClient }).logout()
+    void withAuthProvider({ apolloClient }).logout()
       .then(() => dispatch(actionUnauthenticate));
   };
 
   return (
-    <a className={`${defaultClass} ${className}`} onClick={onClick} {...props}>
+    <a className={`${defaultClass} ${className || ""}`} onClick={onClick} {...props}>
       {i18n.t("general.logout")}
     </a>
   );

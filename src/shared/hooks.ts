@@ -23,7 +23,7 @@ export const useUser = (): AuthUser => {
 
   useEffect(() => {
     if (hasUser) {
-      Router.push(ROUTES.home.path);
+      void Router.push(ROUTES.home.path);
     }
 
   }, [hasUser]);
