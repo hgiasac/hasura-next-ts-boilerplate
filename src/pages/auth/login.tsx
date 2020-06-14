@@ -14,7 +14,7 @@ const LoginPage = (): JSX.Element | null => {
   const isAuthenticated = useSelector((state: AppState) => state.global.isAuthenticated);
 
   if (isAuthenticated) {
-    Router.replace(ROUTES.home.path);
+    void Router.replace(ROUTES.home.path);
 
     return null;
   }

@@ -7,7 +7,7 @@
                 "*.tsx"
             ],
             "parserOptions": {
-                "project": "cypress/tsconfig.json",
+                "project": "./tsconfig.json",
                 "sourceType": "module"
             },
             "globals": {
