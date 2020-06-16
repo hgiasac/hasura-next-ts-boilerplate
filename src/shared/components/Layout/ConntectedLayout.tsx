@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux";
 import { actionUnauthenticate, actionAuthenticate } from "../../../store/global/actions";
 import { authProvider } from "../../auth";
 // import registerServiceWorker from "../../service-worker";
-type Props = {};
+type Props = {
+
+};
 
 // this component initialize client side data 
 const ConnectedLayout: React.FunctionComponent<Props> = ({
@@ -14,7 +16,7 @@ const ConnectedLayout: React.FunctionComponent<Props> = ({
 
   React.useEffect(() => {
     // check authentication from cache
-    authProvider.getUser().then((user) => {
+    void authProvider.getUser().then((user) => {
 
       if (user) {
         dispatch(actionAuthenticate(user));

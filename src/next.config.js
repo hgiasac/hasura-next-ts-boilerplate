@@ -1,9 +1,7 @@
 // const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
-const env = require("./env");
 const withPWA = require('next-pwa')
 
 const config = {
-  env,
   pwa: {
     dest: "./public",
     register: true,

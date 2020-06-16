@@ -32,7 +32,7 @@ const LoginFormInternal: React.FunctionComponent<LoginFormProps> = ({
 
   const dispath = useDispatch();
   const onSuccess = (values: LoginData): void => {
-    authProvider.login({
+    void authProvider.login({
       email: values.email,
       password: values.password
     }).then((user) => {

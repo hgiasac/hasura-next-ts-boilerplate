@@ -18,6 +18,8 @@ This sample SSR react application with Next.js, integrating [Hasura backend Type
 npm install
 ```
 
+Copy `src/dotenv` to `src/.env` then edit your environment
+
 #### Run Next.js development:
 
 ```bash
