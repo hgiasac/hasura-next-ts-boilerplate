@@ -20,8 +20,7 @@ Happy linting! 💖
     "parser": "@typescript-eslint/parser",
     "plugins": [
         "@typescript-eslint",
-        "functional",
-        "import"
+        "functional"
     ],
     "parserOptions": {
         "project": "src/tsconfig.json",
@@ -54,9 +53,7 @@ Happy linting! 💖
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:functional/external-recommended",
-        "plugin:functional/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings"
+        "plugin:functional/recommended"
     ],
     "rules": {
         "functional/no-return-void": 0,
@@ -185,17 +182,6 @@ Happy linting! 💖
             "undefined"
         ],
         "id-match": "error",
-        "import/no-unresolved": 0,
-        "import/no-default-export": "off",
-        "import/no-named-as-default": "off",
-        "import/no-extraneous-dependencies": [
-            "off",
-            {
-                "devDependencies": false
-            }
-        ],
-        "import/no-internal-modules": "off",
-        "import/order": "error",
         "linebreak-style": [
             "error",
             "unix"

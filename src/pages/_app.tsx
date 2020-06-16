@@ -1,6 +1,5 @@
 /* eslint-disable functional/no-class */
 /* eslint-disable functional/no-this-expression */
-/* eslint-disable import/named */
 import * as React from "react";
 import App, { AppInitialProps, AppContext } from "next/app";
 import { END } from "redux-saga";

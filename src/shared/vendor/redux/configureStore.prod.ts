@@ -1,7 +1,5 @@
 /* eslint-disable functional/immutable-data */
 /* eslint-disable functional/no-expression-statement */
-/* eslint-disable import/named */
-
 import { applyMiddleware, createStore, Store } from "redux";
 import createSagaMiddleware, { END } from "redux-saga";
 
