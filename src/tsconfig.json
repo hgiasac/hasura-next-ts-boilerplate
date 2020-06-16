@@ -3,14 +3,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "preserve",
-    "paths": {
-      "@shared/*": ["shared/*"]
-    }
+    "jsx": "preserve"
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
+    "./**/*.ts",
+    "./**/*.tsx"
   ]
 }

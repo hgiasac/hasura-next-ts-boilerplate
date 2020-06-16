@@ -77,7 +77,8 @@ async function createFirebaseUser(input: CreateFirebaseUserInput): Promise<fireb
       }
     });
 
-  return <firebase.User>cred.user;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+  return cred.user as firebase.User;
 }
 
 export async function createProfile(apolloClient: ApolloClient<any>, input: CreateProfileInput): Promise<AuthUser> {
