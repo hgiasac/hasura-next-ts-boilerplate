@@ -2,8 +2,9 @@
 /* eslint-disable functional/no-conditional-statement */
 function assertEnv(value: string | undefined, key: string): string {
 
-  if (value) {
-    return value;
+  // bypass server assertion
+  if (value || typeof window === "undefined") {
+    return value || "";
   }
 
   throw new Error(`Environment ${key} doesn't exist`);

@@ -1,14 +1,11 @@
 /* eslint-disable functional/immutable-data */
 /* eslint-disable functional/no-expression-statement */
-/* eslint-disable import/named */
-
-import sagaMonitor from "@redux-saga/simple-saga-monitor";
 import { applyMiddleware, createStore, Store } from "redux";
 import createSagaMiddleware, { END } from "redux-saga";
 
 const configureStore = (rootReducer, rootSaga) =>
   (initialState): Store => {
-    const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+    const sagaMiddleware = createSagaMiddleware();
     const store = createStore(
       rootReducer,
       initialState,

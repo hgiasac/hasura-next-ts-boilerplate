@@ -1,6 +1,5 @@
 /* eslint-disable functional/no-class */
 /* eslint-disable functional/no-this-expression */
-/* eslint-disable import/named */
 import * as React from "react";
 import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
 import "../styles/tailwind.css";

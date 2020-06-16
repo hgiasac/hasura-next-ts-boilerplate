@@ -1,4 +1,3 @@
-/* eslint-disable import/named */
 import { MakeStore, createWrapper } from "next-redux-wrapper";
 import configureStore from "../shared/vendor/redux/configureStore";
 import { Config } from "../shared/config";

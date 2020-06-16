@@ -186,6 +186,7 @@ Happy linting! 💖
         ],
         "id-match": "error",
         "import/no-unresolved": 0,
+        "import/named": 0,
         "import/no-default-export": "off",
         "import/no-named-as-default": "off",
         "import/no-extraneous-dependencies": [

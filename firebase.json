@@ -1,10 +1,15 @@
 {
   "hosting": {
     "public": "public",
+    "predeploy": [
+      "npm --prefix \"$PROJECT_DIR\" install",
+      "npm --prefix \"$PROJECT_DIR\" run build"
+    ],
     "ignore": [
       "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+      "./.*",
+      "node_modules/**",
+      "cypress/**"
     ],
     "rewrites": [
       {
@@ -15,9 +20,14 @@
   },
   "functions": {
     "source": ".",
-    "predeploy": [
-      "npm --prefix \"$PROJECT_DIR\" install",
-      "npm --prefix \"$PROJECT_DIR\" run build"
+    "ignore": [
+      ".firebase/**",
+      ".firebaserc",
+      "./.*",
+      "firebase.json",
+      "node_modules/**",
+      "public/**",
+      "cypress/**"
     ]
   }
 }
