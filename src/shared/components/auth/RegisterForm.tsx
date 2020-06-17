@@ -2,11 +2,10 @@ import * as React from "react";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { useApolloClient } from "@apollo/client";
-import { Input } from "../General/Form";
+import { Input, ErrorMessage } from "../general/form";
 import { useI18n, useYupForm } from "../../hooks";
 import { actionAuthenticate } from "../../../store/global/actions";
 import { withAuthProvider } from "../../auth";
-import { ErrorMessage } from "../General/Form/Message";
 
 type RegisterFormValues = {
   readonly email: string

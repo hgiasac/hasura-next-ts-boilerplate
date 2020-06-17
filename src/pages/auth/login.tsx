@@ -1,8 +1,8 @@
 import * as React from "react";
 import Router from "next/router";
 import Link from "next/link";
-import { LoginForm } from "../../shared/components/Auth/LoginForm";
-import { Layout } from "../../shared/components/Layout/Layout";
+import { LoginForm } from "../../shared/components/auth/LoginForm";
+import { Layout } from "../../shared/components/layout/Layout";
 import { ROUTES } from "../../shared/routes";
 import { useI18n, useUser } from "../../shared/hooks";
 

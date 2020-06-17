@@ -1,12 +1,11 @@
 import * as React from "react";
 import * as yup from "yup";
-import { Layout } from "../../shared/components/Layout/Layout";
+import { Layout } from "../../shared/components/layout/Layout";
 import { useI18n, useUser, useYupForm } from "../../shared/hooks";
-import { Input } from "../../shared/components/General/Form";
+import { Input, ErrorMessage } from "../../shared/components/general/form";
 import { withAuthProvider } from "../../shared/auth";
 import { I18nProps } from "../../shared/types";
 import { Config } from "../../shared/config";
-import { ErrorMessage } from "../../shared/components/General/Form/Message";
 import { auth } from "firebase";
 
 type ResetPasswordValues = {
