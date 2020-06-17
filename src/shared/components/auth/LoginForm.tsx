@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { Input } from "../General/Form";
+import { Input } from "../general/form";
 import { useI18n, useYupForm } from "../../hooks";
 import { actionAuthenticate } from "../../../store/global/actions";
 import { authProvider } from "../../auth";

@@ -5,7 +5,7 @@ import App, { AppInitialProps, AppContext } from "next/app";
 import { END } from "redux-saga";
 import { reduxWrapper } from "../store";
 import { I18n } from "../shared/vendor/i18n";
-import ConnectedLayout from "../shared/components/Layout/ConntectedLayout";
+import ConnectedLayout from "../shared/components/layout/ConntectedLayout";
 
 import "../styles/main.css";
 

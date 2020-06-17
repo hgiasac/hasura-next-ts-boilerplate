@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Layout } from "../shared/components/Layout/Layout";
+import { Layout } from "../shared/components/layout/Layout";
 
 const IndexPage = (): JSX.Element => (
   <Layout title="Home page">

@@ -2,11 +2,11 @@ import Link from "next/link";
 import * as React from "react";
 import { connect, MapDispatchToProps, useSelector } from "react-redux";
 import { actionOpenMobileSidebar } from "../../../store/global/actions";
-import { IconButton } from "../General/Button";
+import { IconButton } from "../general/Button";
 import { OpenMobileSidebarAction } from "../../../store/global/types";
 import { AppState } from "../../../store/types";
 import { useI18n } from "../../hooks";
-import { LogoutLink } from "../Auth/LogoutLink";
+import { LogoutLink } from "../auth/LogoutLink";
 
 type IDispatchProps = {
   readonly openMobileSidebar: () => OpenMobileSidebarAction
